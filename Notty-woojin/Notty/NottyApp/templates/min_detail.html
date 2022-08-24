@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notty</title>
+    <div>
+        <a href='/real_min' style="font-size:40px">X</a>
+
+        
+        <h1 style="display:inline">Notty</h1>
+
+        <meta http-equiv="refresh" content= "5 ; url=/min_detail">
+
+    </div>
+</head>
+<body>
+
+
+    <br>
+    <p>현재 역 위치 : 
+    <!--현재 호선 구분하는 코드 입니다.-->
+    {% if real_time_line == '1호선'%}
+    1호선
+    {% elif real_time_line == '2호선'%}
+    2호선
+    {% elif real_time_line == '3호선'%}
+    3호선
+    {% elif real_time_line == '4호선'%}
+    4호선
+    {% elif real_time_line == '5호선'%}
+    5호선
+    {% elif real_time_line == '6호선'%}
+    6호선
+    {% elif real_time_line == '7호선'%}
+    7호선
+    {% elif real_time_line == '8호선'%}
+    8호선
+    {% elif real_time_line == '9호선'%}
+    9호선
+    {% else %}
+    {% endif %}
+
+    {{sht_real_path_list}}
+
+        
+    </p>
+    <div class="box">
+        <div style="border:1px solid; padding:10px;">     
+            {% for o in obj %}
+
+                {{ o.STATION_NM}}
+                ( 코드 : {{ o.STATION_CD}} )   
+            {% endfor %}
+            
+            {% for o in gps_obj %}
+
+              x : {{ o.x}} y : {{ o.y}}
+            {% endfor %}
+            
+            <br>
+            {% for o in dest_obj %}
+                {{ o.STATION_NM}}
+                ( 코드 : {{ o.STATION_CD}} )  
+            {% endfor %}
+            <br><br>
+            실시간 열차 위치 : {{real_time_position}}
+            <br>
+            ------------------------------------------------------------
+            <br>
+            <br><br><br>
+
+                        <!--
+            최소 환승 경로 표시
+            <br><br><br>
+            
+            {{min_path_list.0}} {{min_path_list.1}} {{min_path_list.2}} {{min_path_list.3}} {{min_path_list.4}} {{min_path_list.5}} 
+            {{min_path_list.6}} {{min_path_list.7}} {{min_path_list.8}} {{min_path_list.9}} {{min_path_list.10}} {{min_path_list.11}}
+            {{min_path_list.12}} {{min_path_list.13}} {{min_path_list.14}} {{min_path_list.15}} {{min_path_list.16}} {{min_path_list.17}} 
+            {{min_path_list.18}} {{min_path_list.19}} {{min_path_list.20}} {{min_path_list.21}} {{min_path_list.22}} {{min_path_list.23}}
+            {{min_path_list.24}} {{min_path_list.25}} {{min_path_list.26}} {{min_path_list.27}} {{min_path_list.28}} {{min_path_list.29}} 
+            {{min_path_list.30}} {{min_path_list.31}} {{min_path_list.32}} {{min_path_list.33}} {{min_path_list.34}} {{min_path_list.35}} 
+            {{min_path_list.36}} {{min_path_list.37}} {{min_path_list.38}} {{min_path_list.39}} {{min_path_list.40}} {{min_path_list.41}} 
+            {{min_path_list.42}} {{min_path_list.43}} {{min_path_list.44}} {{min_path_list.45}} {{min_path_list.46}} {{min_path_list.47}}
+            {{min_path_list.48}} {{min_path_list.49}} {{min_path_list.50}} {{min_path_list.51}} {{min_path_list.52}} {{min_path_list.53}} 
+            {{min_path_list.54}} {{min_path_list.55}} {{min_path_list.56}} {{min_path_list.57}} {{min_path_list.58}} {{min_path_list.59}}
+            {{min_path_list.60}} {{min_path_list.61}} {{min_path_list.62}} {{min_path_list.63}} {{min_path_list.64}} {{min_path_list.65}} 
+            {{min_path_list.66}} {{min_path_list.67}} {{min_path_list.68}} {{min_path_list.69}} {{min_path_list.70}} {{min_path_list.71}} 
+            <br>
+            <br>
+        -->
+            {{min_path_msg}}
+            <br>
+            <br><br>
+
+
+
+            <br>
+                        
+            (최소환승)
+            <br>
+            {% if min_path_trans_cnt == '0' %}
+                <br><br>    
+                {{min_path_list.0}} {{min_path_list.1}} {{min_path_list.2}} {{min_path_list.3}} {{min_path_list.4}} {{min_path_list.5}} 
+                {{min_path_list.6}} {{min_path_list.7}} {{min_path_list.8}} {{min_path_list.9}} {{min_path_list.10}} {{min_path_list.11}}
+                {{min_path_list.12}} {{min_path_list.13}} {{min_path_list.14}} {{min_path_list.15}} {{min_path_list.16}} {{min_path_list.17}} 
+                {{min_path_list.18}} {{min_path_list.19}} {{min_path_list.20}} {{min_path_list.21}} {{min_path_list.22}} {{min_path_list.23}}
+                {{min_path_list.24}} {{min_path_list.25}} {{min_path_list.26}} {{min_path_list.27}} {{min_path_list.28}} {{min_path_list.29}} 
+                {{min_path_list.30}} {{min_path_list.31}} {{min_path_list.32}} {{min_path_list.33}} {{min_path_list.34}} {{min_path_list.35}} 
+                {{min_path_list.36}} {{min_path_list.37}} {{min_path_list.38}} {{min_path_list.39}} {{min_path_list.40}} {{min_path_list.41}} 
+                {{min_path_list.42}} {{min_path_list.43}} {{min_path_list.44}} {{min_path_list.45}} {{min_path_list.46}} {{min_path_list.47}}
+                {{min_path_list.48}} {{min_path_list.49}} {{min_path_list.50}} {{min_path_list.51}} {{min_path_list.52}} {{min_path_list.53}} 
+                {{min_path_list.54}} {{min_path_list.55}} {{min_path_list.56}} {{min_path_list.57}} {{min_path_list.58}} {{min_path_list.59}}
+                {{min_path_list.60}} {{min_path_list.61}} {{min_path_list.62}} {{min_path_list.63}} {{min_path_list.64}} {{min_path_list.65}} 
+                {{min_path_list.66}} {{min_path_list.67}} {{min_path_list.68}} {{min_path_list.69}} {{min_path_list.70}} {{min_path_list.71}} 
+                
+                 - {{min_line}}
+                <br>
+            {% elif min_path_trans_cnt == '1' %}
+            <br>
+                {{min_joined_path_station_list.0}} {{min_joined_path_station_list.1}} {{min_joined_path_station_list.2}} {{min_joined_path_station_list.3}} {{min_joined_path_station_list.4}} {{min_joined_path_station_list.5}} 
+                {{min_joined_path_station_list.6}} {{min_joined_path_station_list.7}} {{min_joined_path_station_list.8}} {{min_joined_path_station_list.9}} {{min_joined_path_station_list.10}} {{min_joined_path_station_list.11}}
+                {{min_joined_path_station_list.12}} {{min_joined_path_station_list.13}} {{min_joined_path_station_list.14}} {{min_joined_path_station_list.15}} {{min_joined_path_station_list.16}} {{min_joined_path_station_list.17}} 
+                {{min_joined_path_station_list.18}} {{min_joined_path_station_list.19}} {{min_joined_path_station_list.20}} {{min_joined_path_station_list.21}} {{min_joined_path_station_list.22}} {{min_joined_path_station_list.23}}
+                {{min_joined_path_station_list.24}} {{min_joined_path_station_list.25}} {{min_joined_path_station_list.26}} {{min_joined_path_station_list.27}} {{min_joined_path_station_list.28}} {{min_joined_path_station_list.29}} 
+                {{min_joined_path_station_list.30}} {{min_joined_path_station_list.31}} {{min_joined_path_station_list.32}} {{min_joined_path_station_list.33}} {{min_joined_path_station_list.34}} {{min_joined_path_station_list.35}} 
+                {{min_joined_path_station_list.36}} {{min_joined_path_station_list.37}} {{min_joined_path_station_list.38}} {{min_joined_path_station_list.39}} {{min_joined_path_station_list.40}} {{min_joined_path_station_list.41}} 
+                {{min_joined_path_station_list.42}} {{min_joined_path_station_list.43}} {{min_joined_path_station_list.44}} {{min_joined_path_station_list.45}} {{min_joined_path_station_list.46}} {{min_joined_path_station_list.47}}
+                {{min_joined_path_station_list.48}} {{min_joined_path_station_list.49}} {{min_joined_path_station_list.50}} {{min_joined_path_station_list.51}} {{min_joined_path_station_list.52}} {{min_joined_path_station_list.53}} 
+                {{min_joined_path_station_list.54}} {{min_joined_path_station_list.55}} {{min_joined_path_station_list.56}} {{min_joined_path_station_list.57}} {{min_joined_path_station_list.58}} {{min_joined_path_station_list.59}}
+                {{min_joined_path_station_list.60}} {{min_joined_path_station_list.61}} {{min_joined_path_station_list.62}} {{min_joined_path_station_list.63}} {{min_joined_path_station_list.64}} {{min_joined_path_station_list.65}} 
+                {{min_joined_path_station_list.66}} {{min_joined_path_station_list.67}} {{min_joined_path_station_list.68}} {{min_joined_path_station_list.69}} {{min_joined_path_station_list.70}} {{min_joined_path_station_list.71}} 
+                 - {{min_line}}            <br>
+                 {{min_after_trans_path_list.0}} {{min_after_trans_path_list.1}} {{min_after_trans_path_list.2}} {{min_after_trans_path_list.3}} {{min_after_trans_path_list.4}} {{min_after_trans_path_list.5}} 
+                 {{min_after_trans_path_list.6}} {{min_after_trans_path_list.7}} {{min_after_trans_path_list.8}} {{min_after_trans_path_list.9}} {{min_after_trans_path_list.10}} {{min_after_trans_path_list.11}}
+                 {{min_after_trans_path_list.12}} {{min_after_trans_path_list.13}} {{min_after_trans_path_list.14}} {{min_after_trans_path_list.15}} {{min_after_trans_path_list.16}} {{min_after_trans_path_list.17}} 
+                 {{min_after_trans_path_list.18}} {{min_after_trans_path_list.19}} {{min_after_trans_path_list.20}} {{min_after_trans_path_list.21}} {{min_after_trans_path_list.22}} {{min_after_trans_path_list.23}}
+                 {{min_after_trans_path_list.24}} {{min_after_trans_path_list.25}} {{min_after_trans_path_list.26}} {{min_after_trans_path_list.27}} {{min_after_trans_path_list.28}} {{min_after_trans_path_list.29}} 
+                 {{min_after_trans_path_list.30}} {{min_after_trans_path_list.31}} {{min_after_trans_path_list.32}} {{min_after_trans_path_list.33}} {{min_after_trans_path_list.34}} {{min_after_trans_path_list.35}} 
+                 {{min_after_trans_path_list.36}} {{min_after_trans_path_list.37}} {{min_after_trans_path_list.38}} {{min_after_trans_path_list.39}} {{min_after_trans_path_list.40}} {{min_after_trans_path_list.41}} 
+                 {{min_after_trans_path_list.42}} {{min_after_trans_path_list.43}} {{min_after_trans_path_list.44}} {{min_after_trans_path_list.45}} {{min_after_trans_path_list.46}} {{min_after_trans_path_list.47}}
+                 {{min_after_trans_path_list.48}} {{min_after_trans_path_list.49}} {{min_after_trans_path_list.50}} {{min_after_trans_path_list.51}} {{min_after_trans_path_list.52}} {{min_after_trans_path_list.53}} 
+                 {{min_after_trans_path_list.54}} {{min_after_trans_path_list.55}} {{min_after_trans_path_list.56}} {{min_after_trans_path_list.57}} {{min_after_trans_path_list.58}} {{min_after_trans_path_list.59}}
+                 {{min_after_trans_path_list.60}} {{min_after_trans_path_list.61}} {{min_after_trans_path_list.62}} {{min_after_trans_path_list.63}} {{min_after_trans_path_list.64}} {{min_after_trans_path_list.65}} 
+                 {{min_after_trans_path_list.66}} {{min_after_trans_path_list.67}} {{min_after_trans_path_list.68}} {{min_after_trans_path_list.69}} {{min_after_trans_path_list.70}} {{min_after_trans_path_list.71}} 
+                 - {{min_trans_line}}
+                <br>
+            {% elif min_path_trans_cnt == '2' %}
+            <br>
+                {{min_joined_path_station_list.0}} {{min_joined_path_station_list.1}} {{min_joined_path_station_list.2}} {{min_joined_path_station_list.3}} {{min_joined_path_station_list.4}} {{min_joined_path_station_list.5}} 
+                {{min_joined_path_station_list.6}} {{min_joined_path_station_list.7}} {{min_joined_path_station_list.8}} {{min_joined_path_station_list.9}} {{min_joined_path_station_list.10}} {{min_joined_path_station_list.11}}
+                {{min_joined_path_station_list.12}} {{min_joined_path_station_list.13}} {{min_joined_path_station_list.14}} {{min_joined_path_station_list.15}} {{min_joined_path_station_list.16}} {{min_joined_path_station_list.17}} 
+                {{min_joined_path_station_list.18}} {{min_joined_path_station_list.19}} {{min_joined_path_station_list.20}} {{min_joined_path_station_list.21}} {{min_joined_path_station_list.22}} {{min_joined_path_station_list.23}}
+                {{min_joined_path_station_list.24}} {{min_joined_path_station_list.25}} {{min_joined_path_station_list.26}} {{min_joined_path_station_list.27}} {{min_joined_path_station_list.28}} {{min_joined_path_station_list.29}} 
+                {{min_joined_path_station_list.30}} {{min_joined_path_station_list.31}} {{min_joined_path_station_list.32}} {{min_joined_path_station_list.33}} {{min_joined_path_station_list.34}} {{min_joined_path_station_list.35}} 
+                {{min_joined_path_station_list.36}} {{min_joined_path_station_list.37}} {{min_joined_path_station_list.38}} {{min_joined_path_station_list.39}} {{min_joined_path_station_list.40}} {{min_joined_path_station_list.41}} 
+                {{min_joined_path_station_list.42}} {{min_joined_path_station_list.43}} {{min_joined_path_station_list.44}} {{min_joined_path_station_list.45}} {{min_joined_path_station_list.46}} {{min_joined_path_station_list.47}}
+                {{min_joined_path_station_list.48}} {{min_joined_path_station_list.49}} {{min_joined_path_station_list.50}} {{min_joined_path_station_list.51}} {{min_joined_path_station_list.52}} {{min_joined_path_station_list.53}} 
+                {{min_joined_path_station_list.54}} {{min_joined_path_station_list.55}} {{min_joined_path_station_list.56}} {{min_joined_path_station_list.57}} {{min_joined_path_station_list.58}} {{min_joined_path_station_list.59}}
+                {{min_joined_path_station_list.60}} {{min_joined_path_station_list.61}} {{min_joined_path_station_list.62}} {{min_joined_path_station_list.63}} {{min_joined_path_station_list.64}} {{min_joined_path_station_list.65}} 
+                {{min_joined_path_station_list.66}} {{min_joined_path_station_list.67}} {{min_joined_path_station_list.68}} {{min_joined_path_station_list.69}} {{min_joined_path_station_list.70}} {{min_joined_path_station_list.71}} 
+                 - {{min_line}}
+                <br>
+                {{min_joined_path_station_list2.0}} {{min_joined_path_station_list2.1}} {{min_joined_path_station_list2.2}} {{min_joined_path_station_list2.3}} {{min_joined_path_station_list2.4}} {{min_joined_path_station_list2.5}} 
+                {{min_joined_path_station_list2.6}} {{min_joined_path_station_list2.7}} {{min_joined_path_station_list2.8}} {{min_joined_path_station_list2.9}} {{min_joined_path_station_list2.10}} {{min_joined_path_station_list2.11}}
+                {{min_joined_path_station_list2.12}} {{min_joined_path_station_list2.13}} {{min_joined_path_station_list2.14}} {{min_joined_path_station_list2.15}} {{min_joined_path_station_list2.16}} {{min_joined_path_station_list2.17}} 
+                {{min_joined_path_station_list2.18}} {{min_joined_path_station_list2.19}} {{min_joined_path_station_list2.20}} {{min_joined_path_station_list2.21}} {{min_joined_path_station_list2.22}} {{min_joined_path_station_list2.23}}
+                {{min_joined_path_station_list2.24}} {{min_joined_path_station_list2.25}} {{min_joined_path_station_list2.26}} {{min_joined_path_station_list2.27}} {{min_joined_path_station_list2.28}} {{min_joined_path_station_list2.29}} 
+                {{min_joined_path_station_list2.30}} {{min_joined_path_station_list2.31}} {{min_joined_path_station_list2.32}} {{min_joined_path_station_list2.33}} {{min_joined_path_station_list2.34}} {{min_joined_path_station_list2.35}} 
+                {{min_joined_path_station_list2.36}} {{min_joined_path_station_list2.37}} {{min_joined_path_station_list2.38}} {{min_joined_path_station_list2.39}} {{min_joined_path_station_list2.40}} {{min_joined_path_station_list2.41}} 
+                {{min_joined_path_station_list2.42}} {{min_joined_path_station_list2.43}} {{min_joined_path_station_list2.44}} {{min_joined_path_station_list2.45}} {{min_joined_path_station_list2.46}} {{min_joined_path_station_list2.47}}
+                {{min_joined_path_station_list2.48}} {{min_joined_path_station_list2.49}} {{min_joined_path_station_list2.50}} {{min_joined_path_station_list2.51}} {{min_joined_path_station_list2.52}} {{min_joined_path_station_list2.53}} 
+                {{min_joined_path_station_list2.54}} {{min_joined_path_station_list2.55}} {{min_joined_path_station_list2.56}} {{min_joined_path_station_list2.57}} {{min_joined_path_station_list2.58}} {{min_joined_path_station_list2.59}}
+                {{min_joined_path_station_list2.60}} {{min_joined_path_station_list2.61}} {{min_joined_path_station_list2.62}} {{min_joined_path_station_list2.63}} {{min_joined_path_station_list2.64}} {{min_joined_path_station_list2.65}} 
+                {{min_joined_path_station_list2.66}} {{min_joined_path_station_list2.67}} {{min_joined_path_station_list2.68}} {{min_joined_path_station_list2.69}} {{min_joined_path_station_list2.70}} {{min_joined_path_station_list2.71}} 
+                 - {{min_trans_line}}
+                <br>
+                {{min_after_trans_path_list2.0}} {{min_after_trans_path_list2.1}} {{min_after_trans_path_list2.2}} {{min_after_trans_path_list2.3}} {{min_after_trans_path_list2.4}} {{min_after_trans_path_list2.5}} 
+                {{min_after_trans_path_list2.6}} {{min_after_trans_path_list2.7}} {{min_after_trans_path_list2.8}} {{min_after_trans_path_list2.9}} {{min_after_trans_path_list2.10}} {{min_after_trans_path_list2.11}}
+                {{min_after_trans_path_list2.12}} {{min_after_trans_path_list2.13}} {{min_after_trans_path_list2.14}} {{min_after_trans_path_list2.15}} {{min_after_trans_path_list2.16}} {{min_after_trans_path_list2.17}} 
+                {{min_after_trans_path_list2.18}} {{min_after_trans_path_list2.19}} {{min_after_trans_path_list2.20}} {{min_after_trans_path_list2.21}} {{min_after_trans_path_list2.22}} {{min_after_trans_path_list2.23}}
+                {{min_after_trans_path_list2.24}} {{min_after_trans_path_list2.25}} {{min_after_trans_path_list2.26}} {{min_after_trans_path_list2.27}} {{min_after_trans_path_list2.28}} {{min_after_trans_path_list2.29}} 
+                {{min_after_trans_path_list2.30}} {{min_after_trans_path_list2.31}} {{min_after_trans_path_list2.32}} {{min_after_trans_path_list2.33}} {{min_after_trans_path_list2.34}} {{min_after_trans_path_list2.35}} 
+                {{min_after_trans_path_list2.36}} {{min_after_trans_path_list2.37}} {{min_after_trans_path_list2.38}} {{min_after_trans_path_list2.39}} {{min_after_trans_path_list2.40}} {{min_after_trans_path_list2.41}} 
+                {{min_after_trans_path_list2.42}} {{min_after_trans_path_list2.43}} {{min_after_trans_path_list2.44}} {{min_after_trans_path_list2.45}} {{min_after_trans_path_list2.46}} {{min_after_trans_path_list2.47}}
+                {{min_after_trans_path_list2.48}} {{min_after_trans_path_list2.49}} {{min_after_trans_path_list2.50}} {{min_after_trans_path_list2.51}} {{min_after_trans_path_list2.52}} {{min_after_trans_path_list2.53}} 
+                {{min_after_trans_path_list2.54}} {{min_after_trans_path_list2.55}} {{min_after_trans_path_list2.56}} {{min_after_trans_path_list2.57}} {{min_after_trans_path_list2.58}} {{min_after_trans_path_list2.59}}
+                {{min_after_trans_path_list2.60}} {{min_after_trans_path_list2.61}} {{min_after_trans_path_list2.62}} {{min_after_trans_path_list2.63}} {{min_after_trans_path_list2.64}} {{min_after_trans_path_list2.65}} 
+                {{min_after_trans_path_list2.66}} {{min_after_trans_path_list2.67}} {{min_after_trans_path_list2.68}} {{min_after_trans_path_list2.69}} {{min_after_trans_path_list2.70}} {{min_after_trans_path_list2.71}} 
+                 - {{min_trans_line2}}
+            {% elif min_path_trans_cnt == '3' %}
+                <br>
+                {{min_joined_path_station_list.0}} {{min_joined_path_station_list.1}} {{min_joined_path_station_list.2}} {{min_joined_path_station_list.3}} {{min_joined_path_station_list.4}} {{min_joined_path_station_list.5}} 
+                {{min_joined_path_station_list.6}} {{min_joined_path_station_list.7}} {{min_joined_path_station_list.8}} {{min_joined_path_station_list.9}} {{min_joined_path_station_list.10}} {{min_joined_path_station_list.11}}
+                {{min_joined_path_station_list.12}} {{min_joined_path_station_list.13}} {{min_joined_path_station_list.14}} {{min_joined_path_station_list.15}} {{min_joined_path_station_list.16}} {{min_joined_path_station_list.17}} 
+                {{min_joined_path_station_list.18}} {{min_joined_path_station_list.19}} {{min_joined_path_station_list.20}} {{min_joined_path_station_list.21}} {{min_joined_path_station_list.22}} {{min_joined_path_station_list.23}}
+                {{min_joined_path_station_list.24}} {{min_joined_path_station_list.25}} {{min_joined_path_station_list.26}} {{min_joined_path_station_list.27}} {{min_joined_path_station_list.28}} {{min_joined_path_station_list.29}} 
+                {{min_joined_path_station_list.30}} {{min_joined_path_station_list.31}} {{min_joined_path_station_list.32}} {{min_joined_path_station_list.33}} {{min_joined_path_station_list.34}} {{min_joined_path_station_list.35}} 
+                {{min_joined_path_station_list.36}} {{min_joined_path_station_list.37}} {{min_joined_path_station_list.38}} {{min_joined_path_station_list.39}} {{min_joined_path_station_list.40}} {{min_joined_path_station_list.41}} 
+                {{min_joined_path_station_list.42}} {{min_joined_path_station_list.43}} {{min_joined_path_station_list.44}} {{min_joined_path_station_list.45}} {{min_joined_path_station_list.46}} {{min_joined_path_station_list.47}}
+                {{min_joined_path_station_list.48}} {{min_joined_path_station_list.49}} {{min_joined_path_station_list.50}} {{min_joined_path_station_list.51}} {{min_joined_path_station_list.52}} {{min_joined_path_station_list.53}} 
+                {{min_joined_path_station_list.54}} {{min_joined_path_station_list.55}} {{min_joined_path_station_list.56}} {{min_joined_path_station_list.57}} {{min_joined_path_station_list.58}} {{min_joined_path_station_list.59}}
+                {{min_joined_path_station_list.60}} {{min_joined_path_station_list.61}} {{min_joined_path_station_list.62}} {{min_joined_path_station_list.63}} {{min_joined_path_station_list.64}} {{min_joined_path_station_list.65}} 
+                {{min_joined_path_station_list.66}} {{min_joined_path_station_list.67}} {{min_joined_path_station_list.68}} {{min_joined_path_station_list.69}} {{min_joined_path_station_list.70}} {{min_joined_path_station_list.71}} 
+                - {{min_line}}
+                <br>
+                {{min_joined_path_station_list2.0}} {{min_joined_path_station_list2.1}} {{min_joined_path_station_list2.2}} {{min_joined_path_station_list2.3}} {{min_joined_path_station_list2.4}} {{min_joined_path_station_list2.5}} 
+                {{min_joined_path_station_list2.6}} {{min_joined_path_station_list2.7}} {{min_joined_path_station_list2.8}} {{min_joined_path_station_list2.9}} {{min_joined_path_station_list2.10}} {{min_joined_path_station_list2.11}}
+                {{min_joined_path_station_list2.12}} {{min_joined_path_station_list2.13}} {{min_joined_path_station_list2.14}} {{min_joined_path_station_list2.15}} {{min_joined_path_station_list2.16}} {{min_joined_path_station_list2.17}} 
+                {{min_joined_path_station_list2.18}} {{min_joined_path_station_list2.19}} {{min_joined_path_station_list2.20}} {{min_joined_path_station_list2.21}} {{min_joined_path_station_list2.22}} {{min_joined_path_station_list2.23}}
+                {{min_joined_path_station_list2.24}} {{min_joined_path_station_list2.25}} {{min_joined_path_station_list2.26}} {{min_joined_path_station_list2.27}} {{min_joined_path_station_list2.28}} {{min_joined_path_station_list2.29}} 
+                {{min_joined_path_station_list2.30}} {{min_joined_path_station_list2.31}} {{min_joined_path_station_list2.32}} {{min_joined_path_station_list2.33}} {{min_joined_path_station_list2.34}} {{min_joined_path_station_list2.35}} 
+                {{min_joined_path_station_list2.36}} {{min_joined_path_station_list2.37}} {{min_joined_path_station_list2.38}} {{min_joined_path_station_list2.39}} {{min_joined_path_station_list2.40}} {{min_joined_path_station_list2.41}} 
+                {{min_joined_path_station_list2.42}} {{min_joined_path_station_list2.43}} {{min_joined_path_station_list2.44}} {{min_joined_path_station_list2.45}} {{min_joined_path_station_list2.46}} {{min_joined_path_station_list2.47}}
+                {{min_joined_path_station_list2.48}} {{min_joined_path_station_list2.49}} {{min_joined_path_station_list2.50}} {{min_joined_path_station_list2.51}} {{min_joined_path_station_list2.52}} {{min_joined_path_station_list2.53}} 
+                {{min_joined_path_station_list2.54}} {{min_joined_path_station_list2.55}} {{min_joined_path_station_list2.56}} {{min_joined_path_station_list2.57}} {{min_joined_path_station_list2.58}} {{min_joined_path_station_list2.59}}
+                {{min_joined_path_station_list2.60}} {{min_joined_path_station_list2.61}} {{min_joined_path_station_list2.62}} {{min_joined_path_station_list2.63}} {{min_joined_path_station_list2.64}} {{min_joined_path_station_list2.65}} 
+                {{min_joined_path_station_list2.66}} {{min_joined_path_station_list2.67}} {{min_joined_path_station_list2.68}} {{min_joined_path_station_list2.69}} {{min_joined_path_station_list2.70}} {{min_joined_path_station_list2.71}} 
+                - {{min_trans_line}}
+                <br>
+                {{min_joined_path_station_list3.0}} {{min_joined_path_station_list3.1}} {{min_joined_path_station_list3.2}} {{min_joined_path_station_list3.3}} {{min_joined_path_station_list3.4}} {{min_joined_path_station_list3.5}} 
+                {{min_joined_path_station_list3.6}} {{min_joined_path_station_list3.7}} {{min_joined_path_station_list3.8}} {{min_joined_path_station_list3.9}} {{min_joined_path_station_list3.10}} {{min_joined_path_station_list3.11}}
+                {{min_joined_path_station_list3.12}} {{min_joined_path_station_list3.13}} {{min_joined_path_station_list3.14}} {{min_joined_path_station_list3.15}} {{min_joined_path_station_list3.16}} {{min_joined_path_station_list3.17}} 
+                {{min_joined_path_station_list3.18}} {{min_joined_path_station_list3.19}} {{min_joined_path_station_list3.20}} {{min_joined_path_station_list3.21}} {{min_joined_path_station_list3.22}} {{min_joined_path_station_list3.23}}
+                {{min_joined_path_station_list3.24}} {{min_joined_path_station_list3.25}} {{min_joined_path_station_list3.26}} {{min_joined_path_station_list3.27}} {{min_joined_path_station_list3.28}} {{min_joined_path_station_list3.29}} 
+                {{min_joined_path_station_list3.30}} {{min_joined_path_station_list3.31}} {{min_joined_path_station_list3.32}} {{min_joined_path_station_list3.33}} {{min_joined_path_station_list3.34}} {{min_joined_path_station_list3.35}} 
+                {{min_joined_path_station_list3.36}} {{min_joined_path_station_list3.37}} {{min_joined_path_station_list3.38}} {{min_joined_path_station_list3.39}} {{min_joined_path_station_list3.40}} {{min_joined_path_station_list3.41}} 
+                {{min_joined_path_station_list3.42}} {{min_joined_path_station_list3.43}} {{min_joined_path_station_list3.44}} {{min_joined_path_station_list3.45}} {{min_joined_path_station_list3.46}} {{min_joined_path_station_list3.47}}
+                {{min_joined_path_station_list3.48}} {{min_joined_path_station_list3.49}} {{min_joined_path_station_list3.50}} {{min_joined_path_station_list3.51}} {{min_joined_path_station_list3.52}} {{min_joined_path_station_list3.53}} 
+                {{min_joined_path_station_list3.54}} {{min_joined_path_station_list3.55}} {{min_joined_path_station_list3.56}} {{min_joined_path_station_list3.57}} {{min_joined_path_station_list3.58}} {{min_joined_path_station_list3.59}}
+                {{min_joined_path_station_list3.60}} {{min_joined_path_station_list3.61}} {{min_joined_path_station_list3.62}} {{min_joined_path_station_list3.63}} {{min_joined_path_station_list3.64}} {{min_joined_path_station_list3.65}} 
+                {{min_joined_path_station_list3.66}} {{min_joined_path_station_list3.67}} {{min_joined_path_station_list3.68}} {{min_joined_path_station_list3.69}} {{min_joined_path_station_list3.70}} {{min_joined_path_station_list3.71}} 
+                - {{min_trans_line2}}
+                <br>
+                {{min_after_trans_path_list3.0}} {{min_after_trans_path_list3.1}} {{min_after_trans_path_list3.2}} {{min_after_trans_path_list3.3}} {{min_after_trans_path_list3.4}} {{min_after_trans_path_list3.5}} 
+                {{min_after_trans_path_list3.6}} {{min_after_trans_path_list3.7}} {{min_after_trans_path_list3.8}} {{min_after_trans_path_list3.9}} {{min_after_trans_path_list3.10}} {{min_after_trans_path_list3.11}}
+                {{min_after_trans_path_list3.12}} {{min_after_trans_path_list3.13}} {{min_after_trans_path_list3.14}} {{min_after_trans_path_list3.15}} {{min_after_trans_path_list3.16}} {{min_after_trans_path_list3.17}} 
+                {{min_after_trans_path_list3.18}} {{min_after_trans_path_list3.19}} {{min_after_trans_path_list3.20}} {{min_after_trans_path_list3.21}} {{min_after_trans_path_list3.22}} {{min_after_trans_path_list3.23}}
+                {{min_after_trans_path_list3.24}} {{min_after_trans_path_list3.25}} {{min_after_trans_path_list3.26}} {{min_after_trans_path_list3.27}} {{min_after_trans_path_list3.28}} {{min_after_trans_path_list3.29}} 
+                {{min_after_trans_path_list3.30}} {{min_after_trans_path_list3.31}} {{min_after_trans_path_list3.32}} {{min_after_trans_path_list3.33}} {{min_after_trans_path_list3.34}} {{min_after_trans_path_list3.35}} 
+                {{min_after_trans_path_list3.36}} {{min_after_trans_path_list3.37}} {{min_after_trans_path_list3.38}} {{min_after_trans_path_list3.39}} {{min_after_trans_path_list3.40}} {{min_after_trans_path_list3.41}} 
+                {{min_after_trans_path_list3.42}} {{min_after_trans_path_list3.43}} {{min_after_trans_path_list3.44}} {{min_after_trans_path_list3.45}} {{min_after_trans_path_list3.46}} {{min_after_trans_path_list3.47}}
+                {{min_after_trans_path_list3.48}} {{min_after_trans_path_list3.49}} {{min_after_trans_path_list3.50}} {{min_after_trans_path_list3.51}} {{min_after_trans_path_list3.52}} {{min_after_trans_path_list3.53}} 
+                {{min_after_trans_path_list3.54}} {{min_after_trans_path_list3.55}} {{min_after_trans_path_list3.56}} {{min_after_trans_path_list3.57}} {{min_after_trans_path_list3.58}} {{min_after_trans_path_list3.59}}
+                {{min_after_trans_path_list3.60}} {{min_after_trans_path_list3.61}} {{min_after_trans_path_list3.62}} {{min_after_trans_path_list3.63}} {{min_after_trans_path_list3.64}} {{min_after_trans_path_list3.65}} 
+                {{min_after_trans_path_list3.66}} {{min_after_trans_path_list3.67}} {{min_after_trans_path_list3.68}} {{min_after_trans_path_list3.69}} {{min_after_trans_path_list3.70}} {{min_after_trans_path_list3.71}} 
+                - {{min_trans_line3}}
+            
+            {% else %}
+                오류
+            {% endif %}
+
+            <br>
+
+
+            <br>            <br>
+            ------------------------------------------------------------
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <br>
+
+        </div>
+        <br>            
+
+    </div>
+    
+
+
+</body>
+</html>

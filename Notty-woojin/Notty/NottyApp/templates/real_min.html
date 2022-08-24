@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notty</title>
+    <div>
+        <a href='/' style="font-size:40px">X</a>
+        <h1 style="display:inline">Notty</h1>
+        <a href='/setting/' style="font-size:40px">=</a>
+    </div>
+    <meta http-equiv="refresh" content= "35 ; url=/real_min">
+
+</head>
+<body>
+    <br>
+    <form action="/real_min/" method="GET">
+        <select name="time_drop_list" id="time_selected" onchange="this.form.submit()">
+            <option value="">시간 선택</option>
+            <option value="first">{{min_joined_time_table_list.0}}</option>
+            <option value="second">{{min_joined_time_table_list.1}}</option>
+            <option value="third">{{min_joined_time_table_list.2}}</option>
+        </select>
+        </form>
+    <br>
+
+    <!--현재 호선 구분하는 코드 입니다.-->
+    {% if real_time_line == '1호선'%}
+    1호선
+    {% elif real_time_line == '2호선'%}
+    2호선
+    {% elif real_time_line == '3호선'%}
+    3호선
+    {% elif real_time_line == '4호선'%}
+    4호선
+    {% elif real_time_line == '5호선'%}
+    5호선
+    {% elif real_time_line == '6호선'%}
+    6호선
+    {% elif real_time_line == '7호선'%}
+    7호선
+    {% elif real_time_line == '8호선'%}
+    8호선
+    {% elif real_time_line == '9호선'%}
+    9호선
+    {% else %}
+    {% endif %}
+    
+    <br>
+    <a href='/min_detail'>상세 정보</a>
+    <br>
+    <br>
+    열차 현 위치 : {{real_time_position}}
+    <br>
+
+    <br>
+
+    
+        다음 역 : {{real_next_station}}
+    {% if  left_tag == 4%}
+        <br><br>
+        출발지 3역 전 입니다.
+    {% elif  left_tag == 3%}
+        <br><br>
+        출발지 2역 전 입니다.
+    {% elif left_tag == 2 %}
+        <br><br>
+        출발지 전 역 입니다.
+    {% elif left_tag == 1 %}
+        <br><br>
+        출발역 입니다.
+    {% elif arrive_tag == 3 %}
+        <br><br>
+        목적지 도착 2역 전 입니다.
+    {% elif arrive_tag == 2 %}
+        <br><br>
+        목적지 도착 전 역 입니다.
+    {% else %}
+
+    {% endif %}
+</body>
+</html>

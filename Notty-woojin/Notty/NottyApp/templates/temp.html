@@ -1,0 +1,49 @@
+    if request.method == 'POST':
+        print('post')
+    else:
+                
+        print('get요청? in min_detail')
+        
+        form = RouteForm()
+        
+        
+        
+            #1호선 K 로 시작하는 열차번호 처리
+        for item in min_joined_train_num_list:
+            if item.startswith('K'):
+                item.replace('K','0')
+                
+        
+        
+        real_time_url = 'http://swopenAPI.seoul.go.kr/api/subway/'+path_key+'/json/realtimePosition/0/100/'+temp_line
+        real_time_response = requests.get(real_time_url)
+        real_time_resdata = real_time_response.text
+        real_time_obj = json.loads(real_time_resdata)
+        try:
+            real_time_obj = real_time_obj['realtimePositionList']
+        except KeyError:
+            print('KEY ERROR')
+        
+        #print(real_time_obj)
+        
+        
+        global real_time_position
+        global time_tag
+        global min_real_path_list
+        try:
+            for item in real_time_obj:
+                if min_joined_train_num_list[0+time_tag]==item.get('trainNo'):
+                    print(item.get('trainNo'))
+
+                    real_time_position = item.get('statnNm')
+                    print(real_time_position)
+                    if real_time_position == destword:
+                        break
+                    
+
+        except AttributeError:
+            print('AttributeError')    
+        except IndexError:
+            print('IndexError')
+        
+    return render(request,'min_detail.html',{'min_real_path_list':min_real_path_list,'real_time_position':real_time_position,'min_joined_time_table_list':min_joined_time_table_list,'trans_line3':trans_line3,'joined_path_station_list3':joined_path_station_list3,'after_trans_path_list3':after_trans_path_list3,'min_path_trans_cnt':min_path_trans_cnt,'joined_path_station_list2':joined_path_station_list2,'trans_line2':trans_line2,'trans_station2':trans_station2,'after_trans_path_list2':after_trans_path_list2,'trans_line':trans_line,'after_trans_path_list':after_trans_path_list,'joined_path_station_list':joined_path_station_list,'line_obj':line_obj,'line':line,'obj' : obj,'min_path_msg':min_path_msg,'path_time':path_time,'min_path_list':min_path_list,'path_obj':path_obj,'dest_obj':dest_obj })
